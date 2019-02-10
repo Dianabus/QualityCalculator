@@ -1,5 +1,7 @@
 package pl.edu.agh.qualitycalculator;
 
+import android.util.Log;
+
 public class Calculations {
 
     public float calculate(Operation op, float operand1, float operand2, float operand3) throws Exception {
@@ -36,7 +38,12 @@ public class Calculations {
     }
 
     private float divide(float operand1, float operand2) {
+
+        if(operand2 == 0f)
+            return Float.MIN_VALUE;
+
         return operand1 / operand2;
+
     }
 
 }
