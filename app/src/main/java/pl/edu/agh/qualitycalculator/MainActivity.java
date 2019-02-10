@@ -14,11 +14,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     EditText etNum1;
     EditText etNum2;
+    EditText etNum3;
 
     Button btnAdd;
     Button btnSub;
     Button btnMult;
     Button btnDiv;
+    Button btnAvg;
 
     TextView tvResult;
 
@@ -32,11 +34,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         etNum1 = (EditText) findViewById(R.id.etNum1);
         etNum2 = (EditText) findViewById(R.id.etNum2);
+        etNum3 = (EditText) findViewById(R.id.etNum3);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnSub = (Button) findViewById(R.id.btnSub);
         btnMult = (Button) findViewById(R.id.btnMult);
         btnDiv = (Button) findViewById(R.id.btnDiv);
+        btnAvg = (Button) findViewById(R.id.btnAvg);
 
         tvResult = (TextView) findViewById(R.id.tvResult);
 
@@ -44,7 +48,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnSub.setOnClickListener(this);
         btnMult.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
+        btnAvg.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
@@ -68,15 +74,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnDiv:
                 selectedOperation = Operation.DIVIDE;
                 break;
+            case R.id.btnAvg:
+                selectedOperation = Operation.AVERAGE;
+                break;
             default:
                 break;
         }
 
         float num1 = Float.parseFloat(etNum1.getText().toString());
         float num2 = Float.parseFloat(etNum2.getText().toString());
+        float num3 = Float.parseFloat(etNum3.getText().toString());
         try {
-            float result = calculations.calculate(selectedOperation, num1, num2);
-            String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2, result);
+            float result = calculations.calculate(selectedOperation, num1, num2, num3);
+            String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2,num3, result);
             tvResult.setText(verbalizedOperation);
         }
         catch (Exception ex) {

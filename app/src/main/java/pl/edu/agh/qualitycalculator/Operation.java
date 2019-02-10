@@ -24,5 +24,11 @@ public enum Operation {
         public String toString() {
             return "divided by";
         }
+    },
+    AVERAGE{
+        @Override
+        public String toString(){
+            return "";
+        }
     }
 }
