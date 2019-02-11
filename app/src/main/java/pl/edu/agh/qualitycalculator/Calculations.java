@@ -13,16 +13,11 @@ public class Calculations {
             return divide(operand1, operand2);
         } else if (op.equals(Operation.MULTIPLY)) {
             return multiply(operand1, operand2);
-        } else if(op.equals(Operation.AVERAGE)){
-            return calculateAvg(operand1, operand2, operand3);
-        }
-        else {
+        } else if (op.equals(Operation.AVERAGE)) {
+            return average(operand1, operand2, operand3);
+        } else {
             throw new Exception("Unknown operation");
         }
-    }
-
-    private float calculateAvg(float operand1, float operand2, float operand3) {
-        return (operand1 + operand2 + operand3) / 3;
     }
 
     private float sum(float operand1, float operand2) {
@@ -38,12 +33,11 @@ public class Calculations {
     }
 
     private float divide(float operand1, float operand2) {
-
-        if(operand2 == 0f)
-            return Float.MIN_VALUE;
-
         return operand1 / operand2;
-
     }
+
+    private float average(float operand1, float operand2, float operand3) {
+        return (operand1 + operand2 + operand3) / 3; }
+
 
 }

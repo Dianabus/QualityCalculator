@@ -25,10 +25,8 @@ public enum Operation {
             return "divided by";
         }
     },
-    AVERAGE{
+    AVERAGE {
         @Override
-        public String toString(){
-            return "";
-        }
+        public  String toString() { return "Average"; }
     }
 }

@@ -51,12 +51,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnAvg.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         if (TextUtils.isEmpty(etNum1.getText().toString())
                 || TextUtils.isEmpty(etNum2.getText().toString())) {
-            tvResult.setText("Enter some data to calculate");
+            tvResult.setText("Populate first two fields to perform +, -, * or /. \n Populate all three to calculate average.");
             return;
         }
 
@@ -83,15 +82,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         float num1 = Float.parseFloat(etNum1.getText().toString());
         float num2 = Float.parseFloat(etNum2.getText().toString());
-        float num3 = Float.parseFloat(etNum3.getText().toString());
+
+
+        float num3 = 0;
+        if (selectedOperation == Operation.AVERAGE) {
+            if (TextUtils.isEmpty(etNum3.getText().toString()))
+            {
+                tvResult.setText("You need to fill in all three fields to calculate average");
+                return;
+            }
+            else {
+                num3 = Float.parseFloat(etNum3.getText().toString());
+            }}
+
+
         try {
             float result = calculations.calculate(selectedOperation, num1, num2, num3);
-            String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2,num3, result);
-            tvResult.setText(verbalizedOperation);
-        }
+            if (selectedOperation == Operation.AVERAGE) {
+                String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2, num3, result);
+                tvResult.setText(verbalizedOperation);
+            }
+            else {
+                String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2, result);
+                tvResult.setText(verbalizedOperation);
+            }}
         catch (Exception ex) {
-            tvResult.setText("An error ocurred: " + ex.toString());
-        };
+            tvResult.setText("An error occurred: " + ex.toString());
+        }
 
     }
+
 }

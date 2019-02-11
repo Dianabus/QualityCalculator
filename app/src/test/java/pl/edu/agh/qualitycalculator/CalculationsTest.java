@@ -34,6 +34,7 @@ public class CalculationsTest {
         assertEquals(4f, calculationsUnderTest.calculate(Operation.DIVIDE, 8, 2, 1));
     }
 
+    @Test
     public void testCalcAvg() throws Exception{
         assertEquals(2.0, calculationsUnderTest.calculate(Operation.AVERAGE,1,4,1), 0.001);
     }
