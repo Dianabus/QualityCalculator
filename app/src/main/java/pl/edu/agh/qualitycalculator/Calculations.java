@@ -2,7 +2,11 @@ package pl.edu.agh.qualitycalculator;
 
 import android.util.Log;
 
+import java.util.logging.Logger;
+
 public class Calculations {
+
+    Logger logger;
 
     public float calculate(Operation op, float operand1, float operand2, float operand3) throws Exception {
         if (op.equals(Operation.SUM)) {
